@@ -7,7 +7,7 @@ import Footer from '@/components/layout/Footer'
 const inter = Inter({ subsets: ['latin'] })
 
 export const metadata: Metadata = {
-  title: 'Amlifi - AI & Digital Strategy Consulting',
+  title: 'Amplifi - AI & Digital Strategy Consulting',
   description: 'Connect with vetted AI, GTM, and digital transformation consultants for your startup. Fast, trusted matches tailored to your growth stage.',
 }
 

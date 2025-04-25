@@ -31,7 +31,7 @@ export default function Hero() {
             transition={{ duration: 0.8 }}
           >
             <h1 className="text-4xl font-bold tracking-tight text-gray-900 sm:text-6xl lg:text-7xl">
-              Helping Startups{' '}
+              Helping Businesses{' '}
               <span className="relative">
                 <span className="absolute -inset-1 block -skew-y-3 bg-gradient-to-r from-violet-600 to-blue-500 opacity-30"></span>
                 <span className="relative text-transparent bg-clip-text bg-gradient-to-r from-violet-600 to-blue-500">
@@ -41,7 +41,7 @@ export default function Hero() {
               & Digital Strategy
             </h1>
             <p className="mt-6 text-lg leading-8 text-gray-600 max-w-2xl mx-auto">
-              We connect early-stage founders with vetted AI, GTM, and digital transformation consultants—fast, trusted, and tailored to your growth stage.
+              We connect growing businesses with vetted AI consultants across strategy, automation, data science, and machine learning — fast, trusted, and tailored to your goals.
             </p>
             <div className="mt-10 flex items-center justify-center gap-x-6">
               <Link
@@ -80,7 +80,7 @@ export default function Hero() {
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z" />
                     </svg>
                   </span>
-                  For Founders
+                  For Businesses
                 </h3>
                 <ul className="space-y-4">
                   <li className="flex items-center gap-3">
@@ -94,6 +94,12 @@ export default function Hero() {
                       <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
                     </svg>
                     <span className="text-sm text-gray-600">Pre-vetted consultants</span>
+                  </li>
+                  <li className="flex items-center gap-3">
+                    <svg className="h-5 w-5 text-violet-600 shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                      <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
+                    </svg>
+                    <span className="text-sm text-gray-600">No Fees.Ever.</span>
                   </li>
                 </ul>
               </MotionDiv>
@@ -120,13 +126,13 @@ export default function Hero() {
                     <svg className="h-5 w-5 text-blue-600 shrink-0" fill="currentColor" viewBox="0 0 20 20">
                       <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
                     </svg>
-                    <span className="text-sm text-gray-600">Quality leads</span>
+                    <span className="text-sm text-gray-600">Fast matches</span>
                   </li>
                   <li className="flex items-center gap-3">
                     <svg className="h-5 w-5 text-blue-600 shrink-0" fill="currentColor" viewBox="0 0 20 20">
                       <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
                     </svg>
-                    <span className="text-sm text-gray-600">No cold outreach</span>
+                    <span className="text-sm text-gray-600">Pay only on success</span>
                   </li>
                 </ul>
               </MotionDiv>
