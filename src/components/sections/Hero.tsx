@@ -6,7 +6,7 @@ import FloatingElement from '../animations/FloatingElement'
 
 export default function Hero() {
   return (
-    <section className="relative isolate overflow-hidden py-24 sm:py-32">
+    <section className="relative isolate overflow-hidden py-16 sm:py-24 lg:py-32">
       {/* AI-themed background elements */}
       <div className="absolute inset-0 -z-10">
         <div className="absolute inset-0 bg-gradient-to-br from-white via-violet-50 to-white opacity-70" />
@@ -23,83 +23,71 @@ export default function Hero() {
         </div>
       </div>
 
-      <div className="mx-auto max-w-7xl px-6 lg:px-8">
-        <div className="mx-auto max-w-2xl lg:max-w-4xl text-center">
+      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div className="mx-auto max-w-2xl lg:max-w-4xl text-center mb-16">
           <MotionDiv
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
           >
-            <h1 className="text-4xl font-bold tracking-tight text-gray-900 sm:text-6xl lg:text-7xl">
+            <h1 className="text-3xl font-bold tracking-tight text-gray-900 sm:text-5xl lg:text-6xl">
               Helping Businesses{' '}
               <span className="relative">
                 <span className="absolute -inset-1 block -skew-y-3 bg-gradient-to-r from-violet-600 to-blue-500 opacity-30"></span>
                 <span className="relative text-transparent bg-clip-text bg-gradient-to-r from-violet-600 to-blue-500">
                   Harness AI
                 </span>
-              </span>{' '}
-              & Digital Strategy
+              </span>
             </h1>
-            <p className="mt-6 text-lg leading-8 text-gray-600 max-w-2xl mx-auto">
-              We connect growing businesses with vetted AI consultants across strategy, automation, data science, and machine learning — fast, trusted, and tailored to your goals.
+            <p className="mt-6 text-base sm:text-lg leading-8 text-gray-600 max-w-2xl mx-auto">
+              Connect with <span className="text-transparent bg-clip-text bg-gradient-to-r from-violet-600 to-blue-500">trusted AI experts</span> to <span className="text-transparent bg-clip-text bg-gradient-to-r from-violet-600 to-blue-500">grow faster</span>, <span className="text-transparent bg-clip-text bg-gradient-to-r from-violet-600 to-blue-500">cut costs</span>, and <span className="text-transparent bg-clip-text bg-gradient-to-r from-violet-600 to-blue-500">automate</span> your workflow.
             </p>
-            <div className="mt-10 flex items-center justify-center gap-x-6">
-              <Link
-                href="/contact"
-                className="rounded-full bg-gradient-to-r from-violet-600 to-blue-500 px-8 py-4 text-base font-semibold text-white shadow-md hover:from-violet-700 hover:to-blue-600 transition-all duration-300 hover:shadow-lg"
-              >
-                Get Started
-              </Link>
-              <Link
-                href="/how-it-works"
-                className="text-base font-semibold leading-6 text-gray-900 hover:text-violet-600 transition-colors"
-              >
-                Learn more <span aria-hidden="true">→</span>
-              </Link>
-            </div>
           </MotionDiv>
         </div>
 
         {/* Value Props Cards */}
-        <div className="mt-24 relative">
+        <div className="mt-16 sm:mt-24 relative">
           <div className="absolute inset-0 flex items-center">
             <div className="w-full border-t border-gray-200"></div>
           </div>
-          <div className="flex flex-col md:flex-row justify-center items-stretch gap-8 max-w-5xl mx-auto px-4">
+          <div className="flex flex-col md:flex-row justify-center items-stretch gap-6 sm:gap-8 max-w-5xl mx-auto px-4">
             {/* For Founders Card */}
             <FloatingElement duration={2} delay={0.2}>
               <MotionDiv
-                className="flex-1 bg-white/80 backdrop-blur-sm rounded-2xl p-8 shadow-lg ring-1 ring-gray-100 hover:shadow-xl transition-all duration-200 ease-in-out"
+                className="flex-1 bg-white/80 backdrop-blur-sm rounded-2xl p-6 sm:p-8 shadow-lg ring-1 ring-gray-100 hover:shadow-xl transition-all duration-200 ease-in-out"
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5 }}
               >
-                <h3 className="text-lg font-bold text-gray-900 mb-4 flex items-center gap-2">
-                  <span className="h-8 w-8 rounded-full bg-violet-100 flex items-center justify-center">
-                    <svg className="h-4 w-4 text-violet-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <h3 className="text-base sm:text-lg font-bold text-gray-900 mb-4 flex items-center gap-2">
+                  <span className="h-7 w-7 sm:h-8 sm:w-8 rounded-full bg-violet-100 flex items-center justify-center">
+                    <svg className="h-3 w-3 sm:h-4 sm:w-4 text-violet-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z" />
                     </svg>
                   </span>
-                  For Businesses
+                  Our Experts can:
                 </h3>
-                <ul className="space-y-4">
+                <p className="text-sm text-gray-600 mb-4">
+                  Get the expertise you need to harness AI
+                </p>
+                <ul className="space-y-3 sm:space-y-4">
                   <li className="flex items-center gap-3">
-                    <svg className="h-5 w-5 text-violet-600 shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                    <svg className="h-4 w-4 sm:h-5 sm:w-5 text-violet-600 shrink-0" fill="currentColor" viewBox="0 0 20 20">
                       <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
                     </svg>
-                    <span className="text-sm text-gray-600">Quick expert matching</span>
+                    <span className="text-sm text-gray-600">AI Strategy & Implementation</span>
                   </li>
                   <li className="flex items-center gap-3">
-                    <svg className="h-5 w-5 text-violet-600 shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                    <svg className="h-4 w-4 sm:h-5 sm:w-5 text-violet-600 shrink-0" fill="currentColor" viewBox="0 0 20 20">
                       <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
                     </svg>
-                    <span className="text-sm text-gray-600">Pre-vetted consultants</span>
+                    <span className="text-sm text-gray-600">Custom AI Solutions</span>
                   </li>
                   <li className="flex items-center gap-3">
-                    <svg className="h-5 w-5 text-violet-600 shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                    <svg className="h-4 w-4 sm:h-5 sm:w-5 text-violet-600 shrink-0" fill="currentColor" viewBox="0 0 20 20">
                       <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
                     </svg>
-                    <span className="text-sm text-gray-600">No Fees.Ever.</span>
+                    <span className="text-sm text-gray-600">AI Integration & Automation</span>
                   </li>
                 </ul>
               </MotionDiv>
@@ -108,31 +96,37 @@ export default function Hero() {
             {/* For Consultants Card */}
             <FloatingElement duration={2} delay={0.4}>
               <MotionDiv
-                className="flex-1 bg-white/80 backdrop-blur-sm rounded-2xl p-8 shadow-lg ring-1 ring-gray-100 hover:shadow-xl transition-all duration-200 ease-in-out"
+                className="flex-1 bg-white/80 backdrop-blur-sm rounded-2xl p-6 sm:p-8 shadow-lg ring-1 ring-gray-100 hover:shadow-xl transition-all duration-200 ease-in-out"
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: 0.2 }}
               >
-                <h3 className="text-lg font-bold text-gray-900 mb-4 flex items-center gap-2">
-                  <span className="h-8 w-8 rounded-full bg-blue-100 flex items-center justify-center">
-                    <svg className="h-4 w-4 text-blue-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <h3 className="text-base sm:text-lg font-bold text-gray-900 mb-4 flex items-center gap-2">
+                  <span className="h-7 w-7 sm:h-8 sm:w-8 rounded-full bg-blue-100 flex items-center justify-center">
+                    <svg className="h-3 w-3 sm:h-4 sm:w-4 text-blue-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
                     </svg>
                   </span>
                   For Consultants
                 </h3>
-                <ul className="space-y-4">
+                <ul className="space-y-3 sm:space-y-4">
                   <li className="flex items-center gap-3">
-                    <svg className="h-5 w-5 text-blue-600 shrink-0" fill="currentColor" viewBox="0 0 20 20">
-                      <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
-                    </svg>
-                    <span className="text-sm text-gray-600">Fast matches</span>
-                  </li>
-                  <li className="flex items-center gap-3">
-                    <svg className="h-5 w-5 text-blue-600 shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                    <svg className="h-4 w-4 sm:h-5 sm:w-5 text-blue-600 shrink-0" fill="currentColor" viewBox="0 0 20 20">
                       <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
                     </svg>
                     <span className="text-sm text-gray-600">Pay only on success</span>
+                  </li>
+                  <li className="flex items-center gap-3">
+                    <svg className="h-4 w-4 sm:h-5 sm:w-5 text-blue-600 shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                      <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
+                    </svg>
+                    <span className="text-sm text-gray-600">Get picked-Don't pitch</span>
+                  </li>
+                  <li className="flex items-center gap-3">
+                    <svg className="h-4 w-4 sm:h-5 sm:w-5 text-blue-600 shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                      <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
+                    </svg>
+                    <span className="text-sm text-gray-600">Fast matches</span>
                   </li>
                 </ul>
               </MotionDiv>

@@ -1,31 +1,14 @@
 'use client'
 
 import { useState } from 'react'
-import { useForm } from 'react-hook-form'
+import { Link } from '../../components/ui/link'
 import { MotionDiv } from '../animations/MotionWrapper'
 import FloatingElement from '../animations/FloatingElement'
-
-type FormData = {
-  name: string
-  email: string
-  message: string
-}
+import BusinessMatchingForm from '../forms/BusinessMatchingForm'
+import ConsultantMatchingForm from '../forms/ConsultantMatchingForm'
 
 export default function Contact() {
-  const [isSubmitting, setIsSubmitting] = useState(false)
-  const { register, handleSubmit, formState: { errors } } = useForm<FormData>()
-
-  const onSubmit = async (data: FormData) => {
-    setIsSubmitting(true)
-    try {
-      // TODO: Implement form submission logic
-      console.log(data)
-    } catch (error) {
-      console.error('Error submitting form:', error)
-    } finally {
-      setIsSubmitting(false)
-    }
-  }
+  const [activeForm, setActiveForm] = useState<'business' | 'consultant' | null>(null)
 
   return (
     <section id="contact" className="relative isolate overflow-hidden bg-white py-24 sm:py-32">
@@ -35,103 +18,152 @@ export default function Contact() {
         <div className="absolute inset-y-0 right-1/2 -z-10 mr-16 w-[200%] origin-bottom-left skew-x-[-30deg] bg-white/90 shadow-xl shadow-blue-600/10 ring-1 ring-blue-50" />
       </div>
 
-      <div className="mx-auto max-w-3xl px-4 md:px-0">
-        <div className="text-center">
+      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div className="text-center mb-16">
           <MotionDiv
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
           >
             <h2 className="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">
-              Let's get started...
+              Connect with the Right Partner
             </h2>
             <p className="mt-4 text-lg leading-8 text-gray-600">
-              Tell us about your project and we'll match you with the right expert.
+              Whether you're a business looking for expertise or a consultant ready to make an impact
             </p>
           </MotionDiv>
         </div>
 
-        <FloatingElement duration={5} yOffset={10}>
-          <MotionDiv
-            className="mt-16"
-            initial={{ opacity: 0, scale: 0.95 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.8, delay: 0.2 }}
-          >
-            <form onSubmit={handleSubmit(onSubmit)} className="space-y-8">
-              <div>
-                <label htmlFor="name" className="block text-sm font-medium leading-6 text-gray-900">
-                  Name (optional)
-                </label>
-                <div className="mt-2">
-                  <input
-                    {...register('name')}
-                    type="text"
-                    className="block w-full rounded-full border-0 px-4 py-3 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-violet-600 sm:text-sm sm:leading-6"
-                  />
+        {!activeForm ? (
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto">
+            {/* For Businesses */}
+            <FloatingElement duration={5} yOffset={10}>
+              <MotionDiv
+                className="group relative overflow-hidden bg-gradient-to-br from-violet-50 to-violet-100 rounded-3xl shadow-lg p-8 border border-violet-100 hover:shadow-xl transition-all duration-300"
+                initial={{ opacity: 0, scale: 0.95 }}
+                animate={{ opacity: 1, scale: 1 }}
+                transition={{ duration: 0.8 }}
+              >
+                <div className="absolute top-0 right-0 -translate-y-1/2 translate-x-1/2">
+                  <div className="h-16 w-16 rounded-full bg-violet-600/10 flex items-center justify-center">
+                    <svg className="h-8 w-8 text-violet-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
+                    </svg>
+                  </div>
                 </div>
-              </div>
-
-              <div>
-                <label htmlFor="email" className="block text-sm font-medium leading-6 text-gray-900">
-                  Business Email *
-                </label>
-                <div className="mt-2">
-                  <input
-                    {...register('email', {
-                      required: 'Email is required',
-                      pattern: {
-                        value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
-                        message: 'Invalid email address',
-                      },
-                    })}
-                    type="email"
-                    className="block w-full rounded-full border-0 px-4 py-3 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-violet-600 sm:text-sm sm:leading-6"
-                  />
-                  {errors.email && (
-                    <p className="mt-2 text-sm text-red-600">{errors.email.message}</p>
-                  )}
-                </div>
-              </div>
-
-              <div>
-                <label htmlFor="message" className="block text-sm font-medium leading-6 text-gray-900">
-                  How Can We Help You? *
-                </label>
-                <div className="mt-2">
-                  <textarea
-                    {...register('message', { required: 'Message is required' })}
-                    rows={4}
-                    className="block w-full rounded-xl border-0 px-4 py-3 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-violet-600 sm:text-sm sm:leading-6"
-                  />
-                  {errors.message && (
-                    <p className="mt-2 text-sm text-red-600">{errors.message.message}</p>
-                  )}
-                </div>
-              </div>
-
-              <div className="flex flex-col sm:flex-row gap-4 justify-center">
+                <h3 className="text-2xl font-semibold text-gray-900 mb-6">For Businesses</h3>
+                <ul className="space-y-4 mb-8">
+                  <li className="flex items-start space-x-3 group-hover:translate-x-1 transition-transform duration-300">
+                    <div className="mt-1">
+                      <svg className="h-5 w-5 text-violet-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                      </svg>
+                    </div>
+                    <span className="text-gray-700">Access pre-vetted AI consultants</span>
+                  </li>
+                  <li className="flex items-start space-x-3 group-hover:translate-x-1 transition-transform duration-300">
+                    <div className="mt-1">
+                      <svg className="h-5 w-5 text-violet-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                      </svg>
+                    </div>
+                    <span className="text-gray-700">Transparent pricing and expertise</span>
+                  </li>
+                  <li className="flex items-start space-x-3 group-hover:translate-x-1 transition-transform duration-300">
+                    <div className="mt-1">
+                      <svg className="h-5 w-5 text-violet-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                      </svg>
+                    </div>
+                    <span className="text-gray-700">Quick matching within 48 hours</span>
+                  </li>
+                </ul>
                 <button
-                  type="submit"
-                  disabled={isSubmitting}
-                  className="rounded-full bg-violet-600 px-6 py-3 text-sm font-semibold text-white shadow-md hover:bg-violet-700 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-violet-600"
+                  onClick={() => setActiveForm('business')}
+                  className="w-full inline-flex justify-center items-center rounded-xl bg-violet-600 px-6 py-3.5 text-base font-semibold text-white shadow-sm hover:bg-violet-700 transition-all duration-300 group-hover:scale-105"
                 >
-                  {isSubmitting ? 'Submitting...' : 'Book a Consultation'}
+                  Find Matching Consultants
+                  <svg className="ml-2 -mr-1 h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
+                  </svg>
                 </button>
-                <a
-                  href="#contact"
-                  className="rounded-full border border-violet-600 px-6 py-3 text-sm font-medium text-violet-600 hover:bg-violet-100 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-violet-600"
-                >
-                  Talk to an AI Expert
-                </a>
-              </div>
+              </MotionDiv>
+            </FloatingElement>
 
-              <p className="text-xs text-gray-500 text-center">
-                This site is protected by reCAPTCHA and the Privacy Policy and Terms of Service apply.
-              </p>
-            </form>
-          </MotionDiv>
-        </FloatingElement>
+            {/* For Consultants */}
+            <FloatingElement duration={5} yOffset={10}>
+              <MotionDiv
+                className="group relative overflow-hidden bg-gradient-to-br from-blue-50 to-blue-100 rounded-3xl shadow-lg p-8 border border-blue-100 hover:shadow-xl transition-all duration-300"
+                initial={{ opacity: 0, scale: 0.95 }}
+                animate={{ opacity: 1, scale: 1 }}
+                transition={{ duration: 0.8, delay: 0.2 }}
+              >
+                <div className="absolute top-0 right-0 -translate-y-1/2 translate-x-1/2">
+                  <div className="h-16 w-16 rounded-full bg-blue-600/10 flex items-center justify-center">
+                    <svg className="h-8 w-8 text-blue-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
+                    </svg>
+                  </div>
+                </div>
+                <h3 className="text-2xl font-semibold text-gray-900 mb-6">For Consultants</h3>
+                <ul className="space-y-4 mb-8">
+                  <li className="flex items-start space-x-3 group-hover:translate-x-1 transition-transform duration-300">
+                    <div className="mt-1">
+                      <svg className="h-5 w-5 text-blue-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                      </svg>
+                    </div>
+                    <span className="text-gray-700">Connect with quality clients</span>
+                  </li>
+                  <li className="flex items-start space-x-3 group-hover:translate-x-1 transition-transform duration-300">
+                    <div className="mt-1">
+                      <svg className="h-5 w-5 text-blue-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                      </svg>
+                    </div>
+                    <span className="text-gray-700">Set your own rates and availability</span>
+                  </li>
+                  <li className="flex items-start space-x-3 group-hover:translate-x-1 transition-transform duration-300">
+                    <div className="mt-1">
+                      <svg className="h-5 w-5 text-blue-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                      </svg>
+                    </div>
+                    <span className="text-gray-700">Focus on work, not sales</span>
+                  </li>
+                </ul>
+                <button
+                  onClick={() => setActiveForm('consultant')}
+                  className="w-full inline-flex justify-center items-center rounded-xl bg-blue-600 px-6 py-3.5 text-base font-semibold text-white shadow-sm hover:bg-blue-700 transition-all duration-300 group-hover:scale-105"
+                >
+                  Join as Consultant
+                  <svg className="ml-2 -mr-1 h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
+                  </svg>
+                </button>
+              </MotionDiv>
+            </FloatingElement>
+          </div>
+        ) : (
+          <div className="max-w-3xl mx-auto">
+            <div className="mb-8">
+              <button
+                onClick={() => setActiveForm(null)}
+                className="inline-flex items-center text-gray-600 hover:text-gray-900"
+              >
+                <svg className="h-5 w-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 19l-7-7m0 0l7-7m-7 7h18" />
+                </svg>
+                Back to Options
+              </button>
+            </div>
+            {activeForm === 'business' ? (
+              <BusinessMatchingForm />
+            ) : (
+              <ConsultantMatchingForm />
+            )}
+          </div>
+        )}
       </div>
     </section>
   )
